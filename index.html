@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Mahmoud Fayez | Senior Data Annotation & Labeling Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #030306;
+            --bg-secondary: #080810;
+            --accent-cyan: #00d4ff;
+            --accent-blue: #0088cc;
+            --accent-teal: #00ccaa;
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.06);
+            --glass-hover: rgba(255, 255, 255, 0.05);
+            --text-primary: #f0f0f5;
+            --text-secondary: rgba(240, 240, 245, 0.65);
+            --text-muted: rgba(240, 240, 245, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Background & Effects */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-cyan), transparent 70%);
+            top: -200px;
+            right: -100px;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--accent-teal), transparent 70%);
+            bottom: -150px;
+            left: -100px;
+            animation-delay: -7s;
+        }
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-blue), transparent 70%);
+            top: 50%;
+            left: 30%;
+            animation-delay: -14s;
+            opacity: 0.25;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        .grid-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            background: var(--glass-hover);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(3, 3, 6, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+            background: var(--glass-bg);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: var(--bg-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--glass-hover);
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        .btn-project {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: transparent;
+            color: var(--accent-cyan);
+            font-weight: 500;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-project:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--accent-cyan);
+            transform: translateX(5px);
+        }
+
+        /* Stats */
+        .stat-card {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-cyan), var(--accent-teal), transparent);
+        }
+
+        @media (min-width: 768px) {
+            .timeline::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            padding-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-item {
+                padding-left: 0;
+                width: 50%;
+            }
+            
+            .timeline-item:nth-child(odd) {
+                padding-right: 3rem;
+                text-align: right;
+            }
+            
+            .timeline-item:nth-child(even) {
+                margin-left: 50%;
+                padding-left: 3rem;
+            }
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--accent-cyan);
+        }
+
+        @media (min-width: 768px) {
+            .timeline-item:nth-child(odd) .timeline-dot {
+                left: auto;
+                right: -7px;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: -7px;
+            }
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-company {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            list-style: none;
+        }
+
+        .timeline-description li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .timeline-description li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+        }
+
+        @media (min-width: 768px) {
+            .timeline-item:nth-child(odd) .timeline-description li {
+                padding-left: 0;
+                padding-right: 1rem;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-description li::before {
+                left: auto;
+                right: 0;
+                content: '←';
+            }
+        }
+
+        /* Skills */
+        .skill-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-category-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 212, 255, 0.08);
+            border-color: rgba(0, 212, 255, 0.3);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Projects */
+        .project-card {
+            padding: 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 204, 170, 0.1));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--accent-cyan);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .project-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            flex-grow: 1;
+            line-height: 1.7;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-meta-item {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 100px;
+            color: var(--accent-cyan);
+        }
+
+        /* Achievement Cards */
+        .achievement-card {
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-teal));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .achievement-card:hover::before {
+            opacity: 1;
+        }
+
+        .achievement-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 204, 170, 0.05));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+        }
+
+        .achievement-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .achievement-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Education */
+        .education-card {
+            padding: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .education-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 204, 170, 0.05));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--accent-cyan);
+        }
+
+        .education-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .education-institution {
+            color: var(--accent-cyan);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Contact */
+        .contact-card {
+            padding: 2.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(0, 212, 255, 0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+            flex-shrink: 0;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-value {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .contact-value a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            background: var(--glass-hover);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        .counter {
+            display: inline-block;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(3, 3, 6, 0.95);
+                backdrop-filter: blur(20px);
+                padding: 1rem;
+                flex-direction: column;
+                gap: 0;
+                display: none;
+                border-bottom: 1px solid var(--glass-border);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-link {
+                padding: 1rem;
+                border-bottom: 1px solid var(--glass-border);
+            }
+            
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            .orb { animation: none; }
+            .reveal { opacity: 1; transform: none; }
+        }
+
+        *:focus-visible {
+            outline: 2px solid var(--accent-cyan);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="grid-pattern"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+        <div class="max-w-7xl mx-auto flex items-center justify-end">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links flex items-center gap-1" id="navLinks">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#achievements" class="nav-link">Achievements</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="max-w-7xl mx-auto w-full">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="hero-badge reveal">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                            </svg>
+                            Available for Opportunities
+                        </div>
+                        <h1 class="hero-title reveal reveal-delay-1">Muhammad Mahmoud Fayez</h1>
+                        <p class="hero-subtitle reveal reveal-delay-2">Senior Data Annotation & Labeling Specialist</p>
+                        <p class="hero-description reveal reveal-delay-3">
+                            Senior Data Annotation and Labeling Specialist with over 3 years of hands-on experience supporting AI, machine learning, and autonomous vehicle operations through high-quality data annotation, quality assurance, and workflow optimization, consistently achieving 99%+ accuracy across large-scale operations.
+                        </p>
+                        <div class="flex flex-wrap gap-4 reveal reveal-delay-4">
+                            <a href="#contact" class="btn-primary">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                                Contact Me
+                            </a>
+                            <a href="#experience" class="btn-secondary">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                </svg>
+                                View Experience
+                            </a>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass-card stat-card reveal reveal-delay-1">
+                            <div class="stat-value counter" data-target="3">0</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="glass-card stat-card reveal reveal-delay-2">
+                            <div class="stat-value"><span class="counter" data-target="30">0</span>%</div>
+                            <div class="stat-label">Efficiency Gain</div>
+                        </div>
+                        <div class="glass-card stat-card reveal reveal-delay-3">
+                            <div class="stat-value"><span class="counter" data-target="25">0</span>+</div>
+                            <div class="stat-label">Team Members Trained</div>
+                        </div>
+                        <div class="glass-card stat-card reveal reveal-delay-4">
+                            <div class="stat-value"><span class="counter" data-target="99">0</span>%+</div>
+                            <div class="stat-label">Annotation Accuracy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about">
+            <div class="max-w-4xl mx-auto">
+                <div class="section-header">
+                    <span class="section-tag reveal">About</span>
+                    <h2 class="section-title reveal reveal-delay-1">Professional Profile</h2>
+                </div>
+                <div class="glass-card p-8 reveal reveal-delay-2">
+                    <p class="text-lg mb-6" style="color: var(--text-secondary); line-height: 1.9;">
+                        Proven leader in managing cross-functional teams, optimizing operational workflows, and driving measurable performance improvements, including reducing project delays by 30% and improving dataset accuracy by 22%. Experienced in leading cross-functional processes, improving workflow efficiency, and building practical reporting systems that support operational decision-making.
+                    </p>
+                    <p class="text-lg mb-6" style="color: var(--text-secondary); line-height: 1.9;">
+                        Highly skilled in Google Sheets and Google Apps Script to create automated and semi-automated solutions for tracking, reporting, workload management, and process improvement. Proficient in Google Workspace, including Google Sheets, Google Docs, Google Slides, and Google Sites, with the ability to design organized, scalable, and user-friendly tools that enhance daily operations and team performance.
+                    </p>
+                    <p class="text-lg" style="color: var(--text-secondary); line-height: 1.9;">
+                        Recognized for strong attention to detail, analytical thinking, process ownership, and the ability to bridge operational needs with technical solutions in data-driven environments.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="section" id="experience">
+            <div class="max-w-4xl mx-auto">
+                <div class="section-header">
+                    <span class="section-tag reveal">Experience</span>
+                    <h2 class="section-title reveal reveal-delay-1">Career Timeline</h2>
+                    <p class="section-description reveal reveal-delay-2">A progression of increasing responsibility in AI data annotation and team leadership</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-date">October 2025 – Present</div>
+                            <h3 class="timeline-title">Workload Assignment Supervisor</h3>
+                            <div class="timeline-company">Micro Engineering Tech Inc.</div>
+                            <ul class="timeline-description">
+                                <li>Lead and supervise the Workload Assignment team across all operational shifts</li>
+                                <li>Implement capacity planning strategies, reducing project delays by 30%</li>
+                                <li>Develop internal tracking tools using Google Sheets and Apps Script</li>
+                                <li>Deliver training and SOP alignment sessions for 25+ team members</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item reveal reveal-delay-1">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-date">May 2024 – October 2025</div>
+                            <h3 class="timeline-title">Workload Assignment Specialist</h3>
+                            <div class="timeline-company">Micro Engineering Tech Inc.</div>
+                            <ul class="timeline-description">
+                                <li>Coordinated daily task allocation across multiple client queues and AI projects</li>
+                                <li>Applied data-driven capacity planning, improving efficiency by 30%</li>
+                                <li>Built dashboards and trackers for performance monitoring</li>
+                                <li>Contributed to workflow improvements and training initiatives</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item reveal reveal-delay-2">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-date">October 2023 – May 2024</div>
+                            <h3 class="timeline-title">Quality Control Lead</h3>
+                            <div class="timeline-company">Micro Engineering Tech Inc.</div>
+                            <ul class="timeline-description">
+                                <li>Oversaw quality assurance operations for AI and AV annotation projects</li>
+                                <li>Conducted root cause analysis, improving dataset accuracy by 22%</li>
+                                <li>Developed QA frameworks for high-impact projects including Cruise AV</li>
+                                <li>Collaborated with teams to improve quality standards</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item reveal reveal-delay-3">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-date">May 2023 – October 2023</div>
+                            <h3 class="timeline-title">Data Annotation Specialist</h3>
+                            <div class="timeline-company">Micro Engineering Tech Inc.</div>
+                            <ul class="timeline-description">
+                                <li>Produced 800+ high-precision 3D annotations daily for LiDAR and radar</li>
+                                <li>Achieved 120%+ of productivity targets with exceptional quality</li>
+                                <li>Applied complex labeling guidelines in edge-case scenarios</li>
+                                <li>Partnered with ML teams to improve labeling guidelines</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section" id="skills">
+            <div class="max-w-5xl mx-auto">
+                <div class="section-header">
+                    <span class="section-tag reveal">Skills</span>
+                    <h2 class="section-title reveal reveal-delay-1">Technical Proficiencies</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="glass-card p-6 reveal">
+                        <div class="skill-category">
+                            <h3 class="skill-category-title">Data Annotation & Labeling</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">3D Annotation</span>
+                                <span class="skill-tag">LiDAR Labeling</span>
+                                <span class="skill-tag">Radar Labeling</span>
+                                <span class="skill-tag">Dataset Validation</span>
+                                <span class="skill-tag">Quality Assurance</span>
+                                <span class="skill-tag">Edge Case Review</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-6 reveal reveal-delay-1">
+                        <div class="skill-category">
+                            <h3 class="skill-category-title">Operations & Reporting</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Workflow Monitoring</span>
+                                <span class="skill-tag">Capacity Planning</span>
+                                <span class="skill-tag">Performance Tracking</span>
+                                <span class="skill-tag">KPI Reporting</span>
+                                <span class="skill-tag">SOP Improvement</span>
+                                <span class="skill-tag">Root Cause Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-6 reveal reveal-delay-2">
+                        <div class="skill-category">
+                            <h3 class="skill-category-title">Automation & Process Improvement</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Google Sheets Automation</span>
+                                <span class="skill-tag">Google Apps Script</span>
+                                <span class="skill-tag">Semi-Automated Workflows</span>
+                                <span class="skill-tag">Dashboard Creation</span>
+                                <span class="skill-tag">Reporting Optimization</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-6 reveal reveal-delay-3">
+                        <div class="skill-category">
+                            <h3 class="skill-category-title">Tools & Platforms</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Google Workspace</span>
+                                <span class="skill-tag">GULP Suite</span>
+                                <span class="skill-tag">Supervisely</span>
+                                <span class="skill-tag">Microsoft Office</span>
+                                <span class="skill-tag">Google Sites</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section" id="projects">
+            <div class="max-w-6xl mx-auto">
+                <div class="section-header">
+                    <span class="section-tag reveal">Projects</span>
+                    <h2 class="section-title reveal reveal-delay-1">Key Projects</h2>
+                    <p class="section-description reveal reveal-delay-2">Interactive dashboards and tools built with Google Sheets, Apps Script, and web technologies</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card project-card reveal">
+                        <div class="project-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M3 9h18"/>
+                                <path d="M9 21V9"/>
+                            </svg>
+                        </div>
+                        <h3 class="project-title">Performance Dashboard</h3>
+                        <p class="project-description">
+                            An interactive dashboard developed using Google Sheets and Apps Script, designed to provide comprehensive insights into team productivity. It elegantly visualizes key metrics such as total working hours, seconds per label (SPL), daily and monthly performance trends, and individual contributions through dynamic charts, tables, and advanced filtering capabilities.
+                        </p>
+                        <div class="project-meta">
+                            <span class="project-meta-item">Google Sheets</span>
+                            <span class="project-meta-item">Apps Script</span>
+                            <span class="project-meta-item">Dashboard</span>
+                        </div>
+                        <a href="https://muhammadmahmoud711.github.io/performance-Dashboard/" target="_blank" rel="noopener noreferrer" class="btn-project">
+                            Open Project
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="glass-card project-card reveal reveal-delay-1">
+                        <div class="project-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <h3 class="project-title">Quality Dashboard</h3>
+                        <p class="project-description">
+                            A sophisticated quality assurance dashboard built with Google Sheets and Apps Script, focused on monitoring and analyzing data annotation accuracy. It delivers in-depth visualizations of quality scores, error rates, discrepancy analyses, auditor performance, and compliance metrics via interactive charts, detailed reports, and customizable filters to drive continuous improvement.
+                        </p>
+                        <div class="project-meta">
+                            <span class="project-meta-item">QA Analytics</span>
+                            <span class="project-meta-item">Apps Script</span>
+                            <span class="project-meta-item">Reporting</span>
+                        </div>
+                        <a href="https://muhammadmahmoud711.github.io/Quality-Dashboard/" target="_blank" rel="noopener noreferrer" class="btn-project">
+                            Open Project
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="glass-card project-card reveal reveal-delay-2">
+                        <div class="project-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h3 class="project-title">Shift Supervisors Dashboard</h3>
+                        <p class="project-description">
+                            A professional web-based dashboard tailored for shift supervisors to streamline daily operations. It provides a centralized hub for managing, assigning, and monitoring tasks to ensure peak operational efficiency.
+                        </p>
+                        <div class="project-meta">
+                            <span class="project-meta-item">Task Management</span>
+                            <span class="project-meta-item">Operations</span>
+                            <span class="project-meta-item">Web App</span>
+                        </div>
+                        <a href="https://muhammadmahmoud711.github.io/Tasks-Tracker-for-shift-supervisors/" target="_blank" rel="noopener noreferrer" class="btn-project">
+                            Open Project
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section class="section" id="achievements">
+            <div class="max-w-5xl mx-auto">
+                <div class="section-header">
+                    <span class="section-tag reveal">Impact</span>
+                    <h2 class="section-title reveal reveal-delay-1">Key Achievements</h2>
+                </div>
+                
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="glass-card achievement-card reveal">
+                        <div class="achievement-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                        </div>
+                        <div class="achievement-value"><span class="counter" data-target="30">0</span>%</div>
+                        <div class="achievement-label">Delay Reduction</div>
+                    </div>
+                    
+                    <div class="glass-card achievement-card reveal reveal-delay-1">
+                        <div class="achievement-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <div class="achievement-value"><span class="counter" data-target="22">0</span>%</div>
+                        <div class="achievement-label">Accuracy Improvement</div>
+                    </div>
+                    
+                    <div class="glass-card achievement-card reveal reveal-delay-2">
+                        <div class="achievement-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <div class="achievement-value"><span class="counter" data-target="25">0</span>+</div>
+                        <div class="achievement-label">Team Members Trained</div>
+                    </div>
+                    
+                    <div class="glass-card achievement-card reveal reveal-delay-3">
+                        <div class="achievement-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="20" x2="12" y2="10"/>
+                                <line x1="18" y1="20" x2="18" y2="4"/>
+                                <line x1="6" y1="20" x2="6" y2="16"/>
+                            </svg>
+                        </div>
+                        <div class="achievement-value"><span class="counter" data-target="120">0</span>%</div>
+                        <div class="achievement-label">Productivity Target</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="section" id="education">
+            <div class="max-w-3xl mx-auto">
+                <div class="section-header">
+                    <span class="section-tag reveal">Education</span>
+                    <h2 class="section-title reveal reveal-delay-1">Academic Background</h2>
+                </div>
+                
+                <div class="glass-card education-card reveal reveal-delay-2">
+                    <div class="education-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                        </svg>
+                    </div>
+                    <div class="education-details">
+                        <h3>Bachelor of Arts</h3>
+                        <div class="education-institution">Ain Shams University, Faculty of Arts</div>
+                        <div class="education-meta">
+                            <span>2017 – 2021</span>
+                            <span>Grade: Very Good</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section" id="contact">
+            <div class="max-w-5xl mx-auto">
+                <div class="section-header">
+                    <span class="section-tag reveal">Contact</span>
+                    <h2 class="section-title reveal reveal-delay-1">Get In Touch</h2>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="glass-card contact-card reveal">
+                        <h3 class="text-xl mb-6" style="font-family: 'DM Sans', sans-serif; font-weight: 600;">Contact Information</h3>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value"><a href="mailto:muhammadmahmoud960@gmail.com">muhammadmahmoud960@gmail.com</a></div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="contact-label">Phone</div>
+                                <div class="contact-value"><a href="tel:+201153413221">+20 115 341 3221</a></div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="contact-label">Location</div>
+                                <div class="contact-value">Cairo, Egypt</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 pt-6" style="border-top: 1px solid var(--glass-border);">
+                            <h4 class="text-sm mb-4" style="color: var(--text-muted);">Languages</h4>
+                            <div class="flex gap-4">
+                                <div>
+                                    <span style="color: var(--accent-cyan);">Arabic</span>
+                                    <span style="color: var(--text-muted);"> — Native</span>
+                                </div>
+                                <div>
+                                    <span style="color: var(--accent-cyan);">English</span>
+                                    <span style="color: var(--text-muted);"> — Good</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card p-8 reveal reveal-delay-1">
+                        <h3 class="text-xl mb-6" style="font-family: 'DM Sans', sans-serif; font-weight: 600;">Send a Message</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea id="message" name="message" class="form-input" placeholder="Write your message..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full justify-center">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"/>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                                </svg>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="max-w-7xl mx-auto">
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Muhammad Mahmoud Fayez — Senior Data Annotation & Labeling Specialist</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/muhammad-mahmoud-5510a4271" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="mailto:muhammadmahmoud960@gmail.com" class="social-link" aria-label="Send Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="mt-6 text-sm" style="color: var(--text-muted);">© 2026 All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('nav');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        const contactForm = document.getElementById('contactForm');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isExpanded = navLinks.classList.toggle('active');
+            mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
+        });
+
+        navLinks.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        function animateCounter(element, target, duration = 2000) {
+            if (prefersReducedMotion) {
+                element.textContent = target;
+                return;
+            }
+            let start = 0;
+            const increment = target / (duration / 16);
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            }
+            updateCounter();
+        }
+
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.getAttribute('data-target'), 10);
+                    animateCounter(entry.target, target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            
+            const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+            const body = encodeURIComponent(`From: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+            const mailtoLink = `mailto:muhammadmahmoud960@gmail.com?subject=${subject}&body=${body}`;
+            
+            window.location.href = mailtoLink;
+            
+            const button = contactForm.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            button.innerHTML = `
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                Opening Email Client...
+            `;
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                contactForm.reset();
+            }, 3000);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
