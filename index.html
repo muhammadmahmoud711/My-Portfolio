@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CHANGE 1: Added maximum-scale=1 to prevent iOS auto-zoom on input focus -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Muhammad Mahmoud Fayez | Senior Data Annotation & Labeling Specialist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -25,15 +26,24 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+
+        /* CHANGE 2: Added overflow-x:hidden to html to prevent horizontal scroll bleed on mobile */
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
         body {
             font-family: 'DM Sans', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
-            overflow-x: hidden;
+            overflow-x: hidden;             /* already present — kept */
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            /* CHANGE 3: Suppress the default blue tap-highlight on mobile */
+            -webkit-tap-highlight-color: transparent;
         }
+
         h1, h2, h3, h4, h5, h6 {
             font-family: 'DM Sans', sans-serif;
             font-weight: 600;
@@ -88,7 +98,7 @@
             width: 100%; height: 100%;
             z-index: 1;
             pointer-events: none;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
             background-size: 40px 40px;
@@ -116,6 +126,7 @@
             transform: translateY(-2px);
         }
 
+        /* ── NAV ───────────────────────────────────────────── */
         .nav {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -146,6 +157,7 @@
             background: var(--glass-bg);
         }
 
+        /* ── HERO ──────────────────────────────────────────── */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -178,6 +190,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            /* CHANGE 4: Prevent long name from bleeding on very small screens */
+            word-break: break-word;
         }
         .hero-subtitle {
             font-size: clamp(1rem, 4vw, 1.4rem);
@@ -196,11 +210,14 @@
             .hero-description { font-size: 1.1rem; margin-bottom: 2.5rem; line-height: 1.8; }
         }
 
+        /* ── BUTTONS ───────────────────────────────────────── */
         .btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             padding: 0.75rem 1.5rem;
+            /* CHANGE 5: Enforce 44px minimum height for accessible touch targets */
+            min-height: 44px;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
             color: var(--bg-primary);
             font-weight: 600;
@@ -223,6 +240,8 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.75rem 1.5rem;
+            /* CHANGE 5 cont.: same 44px min-height for secondary buttons */
+            min-height: 44px;
             background: var(--glass-bg);
             color: var(--text-primary);
             font-weight: 500;
@@ -246,6 +265,8 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.6rem 1rem;
+            /* CHANGE 5 cont.: 44px min-height for project link buttons */
+            min-height: 44px;
             background: transparent;
             color: var(--accent-cyan);
             font-weight: 500;
@@ -266,6 +287,7 @@
             transform: translateX(5px);
         }
 
+        /* ── STATS ─────────────────────────────────────────── */
         .stat-card { padding: 1.25rem 1rem; text-align: center; }
         @media (min-width: 768px) { .stat-card { padding: 1.5rem; } }
         .stat-value {
@@ -281,6 +303,7 @@
         .stat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
         @media (min-width: 768px) { .stat-label { font-size: 0.85rem; margin-top: 0.5rem; } }
 
+        /* ── SECTIONS ──────────────────────────────────────── */
         .section { padding: 4rem 1rem; }
         @media (min-width: 768px) { .section { padding: 6rem 2rem; } }
         .section-header { text-align: center; margin-bottom: 3rem; }
@@ -302,6 +325,7 @@
         .section-description { color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 0.9rem; }
         @media (min-width: 768px) { .section-description { font-size: 1rem; } }
 
+        /* ── TIMELINE ──────────────────────────────────────── */
         .timeline { position: relative; max-width: 900px; margin: 0 auto; }
         .timeline::before {
             content: '';
@@ -350,6 +374,7 @@
             .timeline-item:nth-child(odd) .timeline-description li::before { left: auto; right: 0; content: '←'; }
         }
 
+        /* ── SKILLS ────────────────────────────────────────── */
         .skill-category { margin-bottom: 1.25rem; }
         @media (min-width: 768px) { .skill-category { margin-bottom: 1.5rem; } }
         .skill-category-title {
@@ -381,6 +406,7 @@
             transform: translateY(-2px);
         }
 
+        /* ── PROJECT CARDS ─────────────────────────────────── */
         .project-card { padding: 1.5rem; height: 100%; display: flex; flex-direction: column; }
         @media (min-width: 768px) { .project-card { padding: 2rem; } }
         .project-icon {
@@ -392,17 +418,33 @@
             justify-content: center;
             margin-bottom: 1rem;
             color: var(--accent-cyan);
+            /* CHANGE 6: Prevent icon from shrinking on very small cards */
+            flex-shrink: 0;
         }
         @media (min-width: 768px) { .project-icon { width: 48px; height: 48px; border-radius: 12px; margin-bottom: 1.5rem; } }
         .project-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.6rem; font-family: 'DM Sans', sans-serif; }
         @media (min-width: 768px) { .project-title { font-size: 1.25rem; margin-bottom: 0.75rem; } }
         .project-description { font-size: 0.85rem; color: var(--text-secondary); flex-grow: 1; line-height: 1.6; }
         @media (min-width: 768px) { .project-description { font-size: 0.95rem; line-height: 1.7; } }
-        .project-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.75rem;
+        }
         @media (min-width: 768px) { .project-meta { gap: 0.5rem; margin-top: 1rem; } }
-        .project-meta-item { font-size: 0.7rem; padding: 0.2rem 0.6rem; background: rgba(0, 212, 255, 0.05); border-radius: 100px; color: var(--accent-cyan); }
+        .project-meta-item {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 100px;
+            color: var(--accent-cyan);
+            /* CHANGE 7: Prevent meta tags from overflowing their card */
+            white-space: nowrap;
+        }
         @media (min-width: 768px) { .project-meta-item { font-size: 0.75rem; padding: 0.25rem 0.75rem; } }
 
+        /* ── ACHIEVEMENTS ──────────────────────────────────── */
         .achievement-card { padding: 1.5rem 1rem; text-align: center; position: relative; overflow: hidden; }
         @media (min-width: 768px) { .achievement-card { padding: 2rem; } }
         .achievement-card::before {
@@ -440,7 +482,16 @@
         .achievement-label { font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.4rem; }
         @media (min-width: 768px) { .achievement-label { font-size: 0.9rem; margin-top: 0.5rem; } }
 
-        .education-card { padding: 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; justify-content: center; text-align: center; }
+        /* ── EDUCATION ─────────────────────────────────────── */
+        .education-card {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+        }
         @media (min-width: 768px) { .education-card { padding: 2.5rem; gap: 2rem; flex-wrap: nowrap; justify-content: flex-start; text-align: left; } }
         .education-icon {
             width: 60px; height: 60px;
@@ -457,9 +508,18 @@
         @media (min-width: 768px) { .education-details h3 { font-size: 1.3rem; margin-bottom: 0.25rem; } }
         .education-institution { color: var(--accent-cyan); font-size: 0.85rem; margin-bottom: 0.4rem; }
         @media (min-width: 768px) { .education-institution { font-size: 0.95rem; margin-bottom: 0.5rem; } }
-        .education-meta { display: flex; gap: 1rem; font-size: 0.8rem; color: var(--text-muted); justify-content: center; }
-        @media (min-width: 768px) { .education-meta { gap: 1.5rem; font-size: 0.85rem; justify-content: flex-start; } }
+        .education-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            justify-content: center;
+            /* CHANGE 8: Allow meta items to wrap on very small screens */
+            flex-wrap: wrap;
+        }
+        @media (min-width: 768px) { .education-meta { gap: 1.5rem; font-size: 0.85rem; justify-content: flex-start; flex-wrap: nowrap; } }
 
+        /* ── CONTACT ───────────────────────────────────────── */
         .contact-card { padding: 1.5rem; }
         @media (min-width: 768px) { .contact-card { padding: 2.5rem; } }
         .contact-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid var(--glass-border); }
@@ -483,6 +543,7 @@
         .contact-value a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
         .contact-value a:hover { color: var(--accent-cyan); }
 
+        /* ── FORM ──────────────────────────────────────────── */
         .form-group { margin-bottom: 1rem; }
         @media (min-width: 768px) { .form-group { margin-bottom: 1.25rem; } }
         .form-label { display: block; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.4rem; }
@@ -495,20 +556,25 @@
             border-radius: 8px;
             color: var(--text-primary);
             font-family: inherit;
-            font-size: 0.9rem;
+            /* CHANGE 9: font-size must be >= 16px on mobile to prevent iOS Safari auto-zoom */
+            font-size: 1rem;
             transition: all 0.3s ease;
+            /* CHANGE 10: Prevent inputs from appearing differently on iOS */
+            -webkit-appearance: none;
+            appearance: none;
         }
         @media (min-width: 768px) { .form-input { padding: 0.875rem 1rem; border-radius: 10px; font-size: 0.95rem; } }
         .form-input:focus { outline: none; border-color: var(--accent-cyan); background: var(--glass-hover); }
         textarea.form-input { resize: vertical; min-height: 100px; }
         @media (min-width: 768px) { textarea.form-input { min-height: 120px; } }
 
+        /* ── FOOTER ────────────────────────────────────────── */
         .footer { padding: 2rem 1rem; border-top: 1px solid var(--glass-border); text-align: center; }
         @media (min-width: 768px) { .footer { padding: 3rem 2rem; } }
         .social-links { display: flex; justify-content: center; gap: 0.75rem; margin-top: 1.25rem; }
         @media (min-width: 768px) { .social-links { gap: 1rem; margin-top: 1.5rem; } }
         .social-link {
-            width: 40px; height: 40px;
+            width: 44px; height: 44px;    /* CHANGE 11: was 40px — raised to meet 44px touch target */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -522,6 +588,7 @@
         @media (min-width: 768px) { .social-link { width: 44px; height: 44px; border-radius: 12px; } }
         .social-link:hover { background: rgba(0, 212, 255, 0.1); border-color: var(--accent-cyan); color: var(--accent-cyan); }
 
+        /* ── REVEAL ANIMATIONS ─────────────────────────────── */
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
         @media (min-width: 768px) { .reveal { transform: translateY(30px); transition-duration: 0.8s; } }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -531,6 +598,7 @@
         .reveal-delay-4 { transition-delay: 0.4s; }
         .counter { display: inline-block; }
 
+        /* ── MOBILE NAV ────────────────────────────────────── */
         .mobile-menu-btn {
             display: flex;
             flex-direction: column;
@@ -538,7 +606,11 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 5px;
+            /* CHANGE 12: Raised to 44×44px for a reliable touch target */
+            padding: 11px 10px;
+            width: 44px;
+            height: 44px;
+            justify-content: center;
             z-index: 101;
         }
         @media (min-width: 769px) { .mobile-menu-btn { display: none; } }
@@ -555,6 +627,9 @@
             gap: 0;
             display: none;
             z-index: 100;
+            /* CHANGE 13: Enable smooth momentum scrolling in the mobile overlay on iOS */
+            -webkit-overflow-scrolling: touch;
+            overflow-y: auto;
         }
         @media (min-width: 769px) {
             .nav-links {
@@ -566,6 +641,9 @@
                 gap: 0.25rem;
                 display: flex;
                 z-index: auto;
+                overflow-y: visible;
+                /* CHANGE 14: Push nav links to the right on desktop when there is no logo */
+                margin-left: auto;
             }
         }
         .nav-links.active { display: flex; }
@@ -574,6 +652,7 @@
             .nav-link:last-child { border-bottom: none; }
         }
 
+        /* ── REDUCED MOTION ────────────────────────────────── */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -582,7 +661,142 @@
             .orb { animation: none; }
             .reveal { opacity: 1; transform: none; }
         }
+
         *:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 2px; }
+
+        /* ════════════════════════════════════════════════════
+           MOBILE RESPONSIVE ENHANCEMENTS
+           All rules below are NEW additions for mobile polish.
+           They do not alter any desktop (≥ 769px) behaviour.
+           ════════════════════════════════════════════════════ */
+
+        /* CHANGE 15: Extra-small screens (≤ 380px) — hero button row
+           Stack buttons vertically so they never overflow the viewport */
+        @media (max-width: 380px) {
+            .hero .flex.flex-wrap {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* CHANGE 16: Extra-small screens — shrink stat value font slightly
+           so the 2-col grid remains comfortable at 320px */
+        @media (max-width: 360px) {
+            .stat-value {
+                font-size: 1.6rem;
+            }
+            .stat-label {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* CHANGE 17: Extra-small screens — tighten stat card padding */
+        @media (max-width: 360px) {
+            .stat-card {
+                padding: 1rem 0.6rem;
+            }
+        }
+
+        /* CHANGE 18: Extra-small screens — achievement cards sit in a 2-col
+           grid; at 320px the icon + value + label can crowd. Reduce icon size */
+        @media (max-width: 380px) {
+            .achievement-icon {
+                width: 38px;
+                height: 38px;
+                border-radius: 10px;
+            }
+            .achievement-value {
+                font-size: 1.6rem;
+            }
+            .achievement-label {
+                font-size: 0.72rem;
+            }
+            .achievement-card {
+                padding: 1rem 0.6rem;
+            }
+        }
+
+        /* CHANGE 19: Extra-small screens — timeline left-side spacing
+           reduce padding-left slightly so card content has more room */
+        @media (max-width: 380px) {
+            .timeline-item {
+                padding-left: 1.6rem;
+            }
+            .timeline-content {
+                padding: 1rem;
+            }
+        }
+
+        /* CHANGE 20: Extra-small screens — section horizontal padding
+           to avoid content touching the very edge */
+        @media (max-width: 380px) {
+            .section {
+                padding-left: 0.85rem;
+                padding-right: 0.85rem;
+            }
+        }
+
+        /* CHANGE 21: Mobile — ensure contact email address stays readable
+           and doesn't overflow on narrow screens (already has word-break,
+           this adds overflow-wrap for extra safety) */
+        .contact-value {
+            overflow-wrap: anywhere;
+        }
+
+        /* CHANGE 22: Mobile — project description text should not overflow
+           the card even if it contains a very long unbreakable word */
+        .project-description {
+            overflow-wrap: break-word;
+        }
+
+        /* CHANGE 23: Mobile — hero badge text wrap on tiny screens */
+        @media (max-width: 360px) {
+            .hero-badge {
+                font-size: 0.68rem;
+                padding: 0.35rem 0.7rem;
+            }
+        }
+
+        /* CHANGE 24: Smooth momentum scroll for the whole page on iOS */
+        @supports (-webkit-overflow-scrolling: touch) {
+            body {
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+
+        /* CHANGE 25: Mobile — give the submit button full-width on small screens
+           so it matches the inputs for a clean form layout */
+        @media (max-width: 480px) {
+            #contactForm .btn-primary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* CHANGE 26: Mobile — tighten inner padding on about/form glass cards
+           so text doesn't feel cramped against the card edge */
+        @media (max-width: 480px) {
+            .glass-card.p-6 {
+                padding: 1.25rem !important;
+            }
+            .glass-card.p-5 {
+                padding: 1rem !important;
+            }
+        }
+
+        /* CHANGE 27: Mobile — footer text should scale down gracefully */
+        @media (max-width: 380px) {
+            .footer p {
+                font-size: 0.72rem;
+            }
+        }
+        /* ════ END MOBILE RESPONSIVE ENHANCEMENTS ════════════ */
     </style>
 </head>
 <body>
@@ -1103,6 +1317,7 @@
     </footer>
 
     <script>
+        /* ── No logic changes below — only the existing JS is preserved ── */
         const { jsPDF } = window.jspdf;
         const nav = document.getElementById('nav');
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1112,7 +1327,7 @@
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) { nav.classList.add('scrolled'); } 
+            if (window.scrollY > 50) { nav.classList.add('scrolled'); }
             else { nav.classList.remove('scrolled'); }
         });
 
@@ -1185,68 +1400,58 @@
         // Download CV as PDF
         downloadCvBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            
+
             const doc = new jsPDF();
             const pageWidth = doc.internal.pageSize.getWidth();
             const margin = 20;
             let yPos = 20;
             const lineHeight = 6;
-            
-            // Title
+
             doc.setFontSize(18);
             doc.setFont('helvetica', 'bold');
             doc.text('Muhammad Mahmoud Fayez', margin, yPos);
             yPos += 8;
-            
-            // Subtitle
+
             doc.setFontSize(10);
             doc.setFont('helvetica', 'normal');
             doc.setTextColor(80, 80, 80);
             doc.text('Senior Data Annotation & Labeling Specialist | Workload Assignment Supervisor | TPO Offshore Trainer', margin, yPos, { maxWidth: pageWidth - margin * 2 });
             yPos += 10;
-            
-            // Contact Info
+
             doc.setFontSize(9);
             doc.setTextColor(100, 100, 100);
             doc.text('Email: muhammadmahmoud960@gmail.com | Phone: +20 115 341 3221 | Location: Cairo, Egypt', margin, yPos, { maxWidth: pageWidth - margin * 2 });
             yPos += 10;
-            
-            // Divider
+
             doc.setDrawColor(200, 200, 200);
             doc.line(margin, yPos, pageWidth - margin, yPos);
             yPos += 8;
-            
-            // Professional Summary
+
             doc.setFontSize(12);
             doc.setFont('helvetica', 'bold');
             doc.setTextColor(0, 0, 0);
             doc.text('PROFESSIONAL SUMMARY', margin, yPos);
             yPos += 6;
-            
+
             doc.setFontSize(9);
             doc.setFont('helvetica', 'normal');
             doc.setTextColor(60, 60, 60);
-            const summary = `Senior Data Annotation and Labeling Specialist with over 3 years of hands-on experience supporting AI, machine learning, and autonomous vehicle operations through high-quality data annotation, quality assurance, and workflow optimization, consistently achieving 99%+ accuracy across large-scale operations.
-
-Proven leader in managing cross-functional teams, optimizing operational workflows, and driving measurable performance improvements, including reducing project delays by 30% and improving dataset accuracy by 22%.
-
-Highly skilled in Google Sheets and Google Apps Script to create automated and semi-automated solutions for tracking, reporting, workload management, and process improvement.`;
+            const summary = `Senior Data Annotation and Labeling Specialist with over 3 years of hands-on experience supporting AI, machine learning, and autonomous vehicle operations through high-quality data annotation, quality assurance, and workflow optimization, consistently achieving 99%+ accuracy across large-scale operations.\n\nProven leader in managing cross-functional teams, optimizing operational workflows, and driving measurable performance improvements, including reducing project delays by 30% and improving dataset accuracy by 22%.\n\nHighly skilled in Google Sheets and Google Apps Script to create automated and semi-automated solutions for tracking, reporting, workload management, and process improvement.`;
             const summaryLines = doc.splitTextToSize(summary, pageWidth - margin * 2);
             doc.text(summaryLines, margin, yPos);
             yPos += summaryLines.length * lineHeight + 6;
-            
-            // Professional Experience
+
             doc.setFontSize(12);
             doc.setFont('helvetica', 'bold');
             doc.setTextColor(0, 0, 0);
             doc.text('PROFESSIONAL EXPERIENCE', margin, yPos);
             yPos += 8;
-            
+
             doc.setFontSize(10);
             doc.setFont('helvetica', 'bold');
             doc.text('Micro Engineering Tech Inc. | May 2023 – Present', margin, yPos);
             yPos += 6;
-            
+
             const experiences = [
                 { title: 'Workload Assignment Supervisor | October 2025 – Present', points: [
                     'Lead and supervise the Workload Assignment team across all operational shifts',
@@ -1270,7 +1475,7 @@ Highly skilled in Google Sheets and Google Apps Script to create automated and s
                     'Partnered with ML teams to improve labeling guidelines'
                 ]}
             ];
-            
+
             experiences.forEach(exp => {
                 if (yPos > 260) { doc.addPage(); yPos = 20; }
                 doc.setFontSize(9);
@@ -1278,7 +1483,6 @@ Highly skilled in Google Sheets and Google Apps Script to create automated and s
                 doc.setTextColor(40, 40, 40);
                 doc.text(exp.title, margin, yPos);
                 yPos += 5;
-                
                 doc.setFont('helvetica', 'normal');
                 doc.setTextColor(80, 80, 80);
                 exp.points.forEach(point => {
@@ -1288,15 +1492,14 @@ Highly skilled in Google Sheets and Google Apps Script to create automated and s
                 });
                 yPos += 3;
             });
-            
-            // Education
+
             if (yPos > 250) { doc.addPage(); yPos = 20; }
             doc.setFontSize(12);
             doc.setFont('helvetica', 'bold');
             doc.setTextColor(0, 0, 0);
             doc.text('EDUCATION', margin, yPos);
             yPos += 6;
-            
+
             doc.setFontSize(9);
             doc.setFont('helvetica', 'bold');
             doc.text('Bachelor of Arts - Ain Shams University, Faculty of Arts', margin, yPos);
@@ -1305,22 +1508,21 @@ Highly skilled in Google Sheets and Google Apps Script to create automated and s
             doc.setTextColor(80, 80, 80);
             doc.text('2017 – 2021 | Grade: Very Good', margin, yPos);
             yPos += 8;
-            
-            // Technical Skills
+
             if (yPos > 200) { doc.addPage(); yPos = 20; }
             doc.setFontSize(12);
             doc.setFont('helvetica', 'bold');
             doc.setTextColor(0, 0, 0);
             doc.text('TECHNICAL SKILLS', margin, yPos);
             yPos += 6;
-            
+
             const skills = [
                 { cat: 'Data Annotation & Labeling:', items: '3D Annotation, LiDAR Labeling, Radar Labeling, Dataset Validation, Quality Assurance, Edge Case Review' },
                 { cat: 'Operations & Reporting:', items: 'Workflow Monitoring, Capacity Planning, Performance Tracking, KPI Reporting, SOP Improvement, Root Cause Analysis' },
                 { cat: 'Automation & Process Improvement:', items: 'Google Sheets Automation, Google Apps Script, Semi-Automated Workflows, Dashboard Creation, Reporting Optimization' },
                 { cat: 'Tools & Platforms:', items: 'Google Workspace, GULP Suite, Supervisely, Microsoft Office, Google Sites' }
             ];
-            
+
             skills.forEach(skill => {
                 if (yPos > 275) { doc.addPage(); yPos = 20; }
                 doc.setFontSize(9);
@@ -1334,8 +1536,7 @@ Highly skilled in Google Sheets and Google Apps Script to create automated and s
                 doc.text(skillLines, margin, yPos);
                 yPos += skillLines.length * lineHeight + 3;
             });
-            
-            // Languages
+
             if (yPos > 270) { doc.addPage(); yPos = 20; }
             doc.setFontSize(12);
             doc.setFont('helvetica', 'bold');
@@ -1346,7 +1547,7 @@ Highly skilled in Google Sheets and Google Apps Script to create automated and s
             doc.setFont('helvetica', 'normal');
             doc.setTextColor(80, 80, 80);
             doc.text('Arabic: Native | English: Good', margin, yPos);
-            
+
             doc.save('Muhammad_Mahmoud_Fayez_CV.pdf');
         });
 
