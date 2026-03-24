@@ -304,9 +304,12 @@
         @media (min-width: 768px) { .stat-label { font-size: 0.85rem; margin-top: 0.5rem; } }
 
         /* ── SECTIONS ──────────────────────────────────────── */
-        .section { padding: 4rem 1rem; }
+        /* CHANGE A: Reduced mobile section padding from 4rem → 2.5rem to
+           eliminate the excessive black gap between sections on small screens */
+        .section { padding: 2.5rem 1rem; }
         @media (min-width: 768px) { .section { padding: 6rem 2rem; } }
-        .section-header { text-align: center; margin-bottom: 3rem; }
+        /* CHANGE B: Reduced mobile section-header margin-bottom from 3rem → 2rem */
+        .section-header { text-align: center; margin-bottom: 2rem; }
         @media (min-width: 768px) { .section-header { margin-bottom: 4rem; } }
         .section-tag {
             display: inline-block;
@@ -1225,7 +1228,7 @@
                             </div>
                             <div>
                                 <div class="contact-label">Email</div>
-                                <div class="contact-value"><a href="mailto:muhammadmahmoud960@gmail.com">muhammadmahmoud960@gmail.com</a></div>
+                                <div class="contact-value"><a href="/cdn-cgi/l/email-protection#d0bda5b8b1bdbdb1b4bdb1b8bdbfa5b4e9e6e090b7bdb1b9bcfeb3bfbd"><span class="__cf_email__" data-cfemail="026f776a636f6f63666f636a6f6d77663b343242656f636b6e2c616d6f">[email&#160;protected]</span></a></div>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1305,7 +1308,7 @@
                         <circle cx="4" cy="4" r="2"/>
                     </svg>
                 </a>
-                <a href="mailto:muhammadmahmoud960@gmail.com" class="social-link" aria-label="Send Email">
+                <a href="/cdn-cgi/l/email-protection#b4d9c1dcd5d9d9d5d0d9d5dcd9dbc1d08d8284f4d3d9d5ddd89ad7dbd9" class="social-link" aria-label="Send Email">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                         <polyline points="22,6 12,13 2,6"/>
@@ -1316,7 +1319,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         /* ── No logic changes below — only the existing JS is preserved ── */
         const { jsPDF } = window.jspdf;
         const nav = document.getElementById('nav');
